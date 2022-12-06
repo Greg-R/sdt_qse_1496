@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name "MC1496")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/ul_MC1496DR2G/KiCAD/2022-12-06_12-37-55/2022-12-06_12-37-55.kicad_sym")(options "")(descr ""))
+  (lib (name "SJ-3524-SMT")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/SJ-3524-SMT/SJ-3524-SMT.kicad_sym")(options "")(descr ""))
+  (lib (name "SN74AC74PW")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/SN74AC74PW/SN74AC74PW.kicad_sym")(options "")(descr ""))
+  (lib (name "SMA_Conn_SMT")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/ul_RF2-04A-T-00-50-G/KiCAD/2022-12-06_12-58-10/2022-12-06_12-58-10.kicad_sym")(options "")(descr ""))
+)
