@@ -1,0 +1,8 @@
+(fp_lib_table
+  (lib (name "SMA_SMT")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/ul_RF2-04A-T-00-50-G/KiCAD/2022-12-06_12-58-10/footprints.pretty")(options "")(descr ""))
+  (lib (name "SN74AC74PW")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/SN74AC74PW")(options "")(descr ""))
+  (lib (name "MC1496")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/ul_MC1496DR2G/KiCAD/2022-12-06_12-37-55/footprints.pretty")(options "")(descr ""))
+  (lib (name "digikey-footprints")(type "KiCad")(uri "/home/raven/gitrepos/pcb/digikey-kicad-library/digikey-footprints.pretty")(options "")(descr ""))
+  (lib (name "Stereo_Jack_SMT")(type "KiCad")(uri "/home/raven/gitrepos/pcb/downloaded_parts/SJ-3524-SMT")(options "")(descr ""))
+  (lib (name "sdt_qse_1496")(type "KiCad")(uri "${KIPRJMOD}/sdt_qse_1496.pretty")(options "")(descr ""))
+)
