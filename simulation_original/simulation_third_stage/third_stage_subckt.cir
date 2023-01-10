@@ -1,0 +1,25 @@
+* Simulate a 2N3904 HF Amplifier
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/2N3904.LIB"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/MMBT2222ALT1.LIB"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/2N3906.LIB"
+
+* Basic BJT biasing ...
+*.options savecurrents
+
+.subckt amplifier3 input output vsupply
+
+Q3 vsupply 2 1 Q2n3904
+Q4 0 4 1 Q2n3906
+*Q1 3 2 1 Qmmbt2222alt1g
+
+Rb1  vsupply 2  24000.0
+C6  input 2  0.1u
+R12  2 4  10000
+C7  input 4  0.1u
+R13  4 0  24000
+R3  6 0   200
+R9  1 0  3000
+
+Co  1 output  0.1u
+
+.ends amplifier3

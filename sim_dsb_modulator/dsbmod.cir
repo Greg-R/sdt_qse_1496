@@ -1,0 +1,68 @@
+* Simulate MC1496 based IQ Modulator
+*.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/MC1496_SPICE_MODEL.LIB"
+*.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/MMBT2222ALT1.LIB"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/sim_dsb_modulator/dsbmod_subckt.cir"
+
+xmodi 1 2 outplusi outminusi dsbmodulator
+
+* Put resistive loads on the output so the transient dies quickly.
+Rloadplus outplusi 0 10000.0
+Rloadminus outminusi 0 10000.0
+
+.param audiolevel = 800.0m lolevel = 150.0m
+.param rffreq = 7.0e6
+
+Viaudio 1 0 sin(0 {audiolevel} 1000 25.0m 0 0)
+Vilo    2 0 sin(0.0, {lolevel}, {rffreq}, 25.0m, 0 0)
+
+* A transformer on the outout.
+*Lprimary outplusi outminusi 1000u
+*Lsecondary output 0 200u
+*Ktrans Lprimary Lsecondary 1.0
+
+* RF Load
+*Rload output 0 50.0
+
+.control
+set ngbehavior=ps
+
+destroy all
+*save xmodi.1 xmodi.4 xmodi.8 xmodi.5 xmodi.10 xmodi.6 xmodi.12
+save outplusi outminusi
+
+* op
+tran 2.0n 60.0m 50.0m uic
+*tran 100.0n 400.0m uic
+*setplot tran1
+
+
+set lowlimit =  6.995e6
+set highlimit = 7.005e6
+
+let output = outplusi - outminusi
+*plot output
+*plot outplusi
+*plot outminusi
+*plot xmodi.1
+*plot xmodi.4
+*plot xmodi.8
+*plot xmodi.6
+*plot xmodi.12
+
+setplot tran1
+linearize output
+set specwindow = blackman 
+fft output
+plot db(output) xlimit $lowlimit $highlimit  ylimit -90 10.0 ydelta 10.0
+plot db(output) ylimit -90.0 10.0 ydelta 10.0
+
+*setplot tran1
+*linearize xmodi.12
+*set specwindow = blackman 
+*fft xmodi.12
+*plot db(xmodi.12) xlimit 6.995e6 7.005e6  ylimit -100 0.0 ydelta 10.0
+*plot db(xmodi.12) ylimit -100.0 0.0 ydelta 10.0
+
+.endc
+
+.end

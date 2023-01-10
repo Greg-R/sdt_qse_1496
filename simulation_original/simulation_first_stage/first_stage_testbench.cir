@@ -1,0 +1,35 @@
+* 2N3904 50 Ohm Amplifier Transient Test Bench
+
+* Include the sub-circuit.
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/simulation_original/simulation_first_stage/amplifier_2n3904_subckt.cir"
+
+.param audiolevel = 100m
+.param rffreq = 7.0Meg
+
+* Instantiate an amplifier.  Input Output Vsupply
+Xamplifier input output 3 amplifier1
+
+* Needs a 15 volt power source:
+Vsupply 3 0 15V
+
+* Note, the subcircuit has an output blocking capacitor.
+Rload output 0 1000.0
+
+* Input source
+Vin 10 0 sin(0 {audiolevel} {rffreq} 0.1m 0 0)
+* Note, the subcircuit has an input blocking capacitor.
+Rs  10 input 50.0
+
+.control
+set ngbehavior=ps
+*save input output
+op
+*tran 2.0n 2.0m 1.999m
+
+*plot v(input)
+*plot v(output)
+
+.endc
+
+.end
+

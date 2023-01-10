@@ -1,0 +1,46 @@
+* 3rd Stage of the SDT Transmitter
+
+* Include the sub-circuit.
+*.include "/home/raven/gitrepos/pcb/sdt_qse_1496/simulation_2N3904_amp/amplifier_2n3904.cir"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/simulation_2N3904_amp/2N3904.LIB"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/simulation_xmas_travel/MMBT2222ALT1.LIB"
+* Include the sub-circuit.
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/simulation_third_stage/third_stage_subckt.cir"
+
+* Needs a 15 volt power source:
+Vsupply 15 0 15V
+
+* Connect the output of the first stage to the base of the second stage.
+Xthirdstage input output 15 amplifier3
+
+Rload output 0 10000
+Cload output 0 1500p
+
+.param rflevel = 600.0m
+.param rffreq = 7.0e6
+
+* Input source
+Vin input 0 sin(0 {rflevel} {rffreq} 0.1m 0 0)
+
+* Input source
+*Vin 1 0 dc 0 ac 1.0 portnum 1 z0 50.0
+* Output source
+*Vout 2 0 dc 0 ac 1.0 portnum 2 z0 50.0
+
+.control
+set ngbehavior=ps
+save input output
+save xthirdstage.1
+*op
+*ac dec 10 1.0Meg 100.0Meg
+*sp dec 10 1.0Meg 100.0Meg
+
+tran 2n 1.1m 1.098m
+
+plot v(input)
+plot v(output)
+plot v(xthirdstage.1)
+*plot v(secondin)
+.endc
+
+.end
