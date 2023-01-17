@@ -2,25 +2,25 @@
 .include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/MC1496_SPICE_MODEL.LIB"
 .include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/MMBT2222ALT1.LIB"
 
-.subckt dsbmodulator audioin rfin outplus outminus
+.subckt dsbmodulator audioin rfin 6 12 supply
 
 Vsupply 15 0 DC 12.27 
 * MC1496 VS+ GAIN2 GAIN3 VS- Bias VO+ NC VEE NC VO- NC VC- NC VC+
 XGCELL    1    2     3    4   5    6  7   0  9  12  11 10  13  8  MC1496
 * Output bias resistors
-Rloadplusi   15  6 1000
-Rloadminusi  15 12 1000
+*Rloadplusi   15  6 1000
+*Rloadminusi  15 12 1000
 * Gain setting resistor
 Rgain 2 3 500
 * Main bias control resistor
-Rbias 15 5 5000
+Rbias supply 5 5000
 * Bias chain
-R1 15  8 1300
+R1 supply  8 1300
 R2  8 17  820
 R3 17  0 1000
 * Signal input bias
-R4 17 1 100
-R5 17 4 100
+R4 17 1 1000
+R5 17 4 1000
 * Signal input blocking capacitor
 C1i audioin 1 1.0u ic=-3.918
 * Signal bypass capacitors, for both RF and audio.
@@ -32,10 +32,10 @@ R6i 8 10 51
 C2i rfin 10 0.1u
 
 *  Temporary output blocking capacitors
-Coutplusi  6 outplus 0.1u
-Coutminusi 12 outminus 0.1u
-Routplusi  outplus  0 1.0Meg
-Routminusi outminus 0 1.0Meg
+*Coutplusi  6 outplus 0.1u
+*Coutminusi 12 outminus 0.1u
+*Routplusi  outplus  0 1.0Meg
+*Routminusi outminus 0 1.0Meg
 
 * Output emitter followers and blocking caps.
 *Qoutplusi  15 6 120 Qmmbt2222alt1g

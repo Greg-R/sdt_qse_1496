@@ -8,8 +8,8 @@ Vsupply 15 0 DC 12.27
 * MC1496 VS+ GAIN2 GAIN3 VS- Bias VO+ NC VEE NC VO- NC VC- NC VC+
 XGCELL    1    2     3    4   5    6  7   0  9  12  11 10  13  8  MC1496
 * Output bias resistors
-Rloadplusi   15  6 1000
-Rloadminusi  15 12 1000
+Rloadplusi   15  6 3000
+Rloadminusi  15 12 3000
 * Gain setting resistor
 Rgain 2 3 1000
 * Main bias control resistor
@@ -34,60 +34,65 @@ C2i rfin 10 0.1u
 * Output emitter followers and blocking caps.
 Qoutplusi  15 6 120 Qmmbt2222alt1g
 Qoutminusi 15 12 121 Qmmbt2222alt1g
-Rlplusi    120 0 1000 
-Rlminusi   121 0 1000 
-Coutplusi  120 outplus 0.1u
+Rlplusi 120 0 1000 
+Rlminusi 121 0 1000 
+Coutplusi 120 outplus 0.1u
 Coutminusi 121 outminus 0.1u
-Routplusi  outplus 0 1.0Meg
-Routminusi outminus 0  1.0Meg
 
 .ends dsbmodulator
 
 xmodi 1 2 outplusi outminusi dsbmodulator
+xmodq 3 4 outplusq outminusq dsbmodulator
 
-.param audiolevel = 400.0m lolevel = 200.0m
+.param audiolevel = 200.0m lolevel = 100.0m
 .param rffreq = 7.0e6
 
-Viaudio 1 0 sin(0 {audiolevel} 1000 5.0m 0 0)
-Vilo    2 0 sin(0.0, {lolevel}, {rffreq}, 5.0m, 0 0)
+Viaudio 1 0 sin(0 {audiolevel} 1000 0.1m 0 0)
+Vilo    2 0 sin(0.0, {lolevel}, {rffreq}, 0.1m, 0 0)
+Vqaudio 3 0 sin(0 {audiolevel} 1000 0.1m 0 90)
+Vqlo    4 0 sin(0.0, {lolevel}, {rffreq}, 0.1m, 0, 90)
+
+* Join the positive outputs together with small resistors.
+Rplusi outplusi outplus 1.0
+Rplusq outplusq outplus 1.0
+*Rloadplus outputplus 0 loadrf
+
+* Join the negative outputs together with small resistors.
+Rminusi outminusi outminus 1.0
+Rminusq outminusq outminus 1.0
+*Rloadminus outputminus 0 loadrf
 
 * A transformer on the outout.
-*Lprimary outplusi outminusi 1000u
-*Lsecondary output 0 200u
-*Ktrans Lprimary Lsecondary 1.0
+Lprimary outplus outminus 1000u
+Lsecondary output 0 1000u
+Ktrans Lprimary Lsecondary 1.0
 
 * RF Load
-*Rload output 0 50.0
+Rload output 0 50.0
 
 .control
 set ngbehavior=ps
 
 destroy all
-save outplusi outminusi
+save output xmodi.12
 
-
-tran 4.0n 20.0m 10.0m uic
+tran 2.0n 20.0m 10.0m uic
 *setplot tran1
 *plot output
-
-set lowlimit = 6.995e6
-set highlimit = 7.005e6
-
-let output = outplusi - outminusi
 
 setplot tran1
 linearize output
 set specwindow = blackman 
 fft output
-plot db(output) xlimit $lowlimit $highlimit  ylimit -100 0.0 ydelta 10.0
+plot db(output) xlimit 6.995e6 7.005e6  ylimit -100 0.0 ydelta 10.0
 plot db(output) ylimit -100.0 0.0 ydelta 10.0
 
-*setplot tran1
-*linearize xmodi.12
-*set specwindow = blackman 
-*fft xmodi.12
-*plot db(xmodi.12) xlimit 6.995e6 7.005e6  ylimit -100 0.0 ydelta 10.0
-*plot db(xmodi.12) ylimit -100.0 0.0 ydelta 10.0
+setplot tran1
+linearize xmodi.12
+set specwindow = blackman 
+fft xmodi.12
+plot db(xmodi.12) xlimit 6.995e6 7.005e6  ylimit -100 0.0 ydelta 10.0
+plot db(xmodi.12) ylimit -100.0 0.0 ydelta 10.0
 
 .endc
 
