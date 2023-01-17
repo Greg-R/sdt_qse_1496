@@ -1219,7 +1219,6 @@
     )
   )
 
-
   (junction (at 246.38 101.6) (diameter 0) (color 0 0 0 0)
     (uuid 1044918e-8d23-4521-aeba-7b8bf56d579f)
   )
@@ -2809,7 +2808,7 @@
     (property "Reference" "R40" (id 0) (at 126.111 175.6953 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "10k" (id 1) (at 126.111 178.2322 0)
+    (property "Value" "100" (id 1) (at 126.111 178.2322 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 123.444 176.276 90)
@@ -3246,7 +3245,7 @@
     (property "Reference" "R39" (id 0) (at 118.491 175.6953 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "10k" (id 1) (at 118.491 178.2322 0)
+    (property "Value" "100" (id 1) (at 118.491 178.2322 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 115.824 176.276 90)
@@ -3772,7 +3771,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid db00ba08-2f9e-4423-9d6b-a993d9ab40b8)
     (property "Reference" "R38" (id 0) (at 110.49 166.8612 90))
-    (property "Value" "10k" (id 1) (at 110.49 169.3981 90))
+    (property "Value" "470" (id 1) (at 110.49 169.3981 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 110.744 170.434 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3914,7 +3913,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid f11b2956-7b53-4337-bc68-eec0e1a88425)
     (property "Reference" "R37" (id 0) (at 110.49 159.2412 90))
-    (property "Value" "10k" (id 1) (at 110.49 161.7781 90))
+    (property "Value" "470" (id 1) (at 110.49 161.7781 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 110.744 162.814 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -4445,16 +4444,16 @@
       (reference "R36") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/f11b2956-7b53-4337-bc68-eec0e1a88425"
-      (reference "R37") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R37") (unit 1) (value "470") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/db00ba08-2f9e-4423-9d6b-a993d9ab40b8"
-      (reference "R38") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R38") (unit 1) (value "470") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/84adc3ef-4e73-43b9-be7b-aa88d78057aa"
-      (reference "R39") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R39") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/3f9288f9-2fcb-442f-9dab-330a5e739560"
-      (reference "R40") (unit 1) (value "10k") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R40") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/dd6f2fcf-41d2-44f7-ae61-da50c8494c9a/c36cf2c4-337a-419d-abcf-23c70512f7ea"
       (reference "R42") (unit 1) (value "1.3k") (footprint "Resistor_SMD:R_1206_3216Metric")
