@@ -2789,7 +2789,7 @@
     (property "Reference" "R68" (id 0) (at 245.491 70.2853 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "100" (id 1) (at 245.491 72.8222 0)
+    (property "Value" "DNP" (id 1) (at 245.491 72.8222 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 242.824 70.866 90)
@@ -3098,7 +3098,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 6a318012-90af-4c46-97b4-20766224a6af)
     (property "Reference" "R13" (id 0) (at 138.43 38.5912 90))
-    (property "Value" "500" (id 1) (at 138.43 41.1281 90))
+    (property "Value" "470" (id 1) (at 138.43 41.1281 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 138.176 44.196 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3146,7 +3146,7 @@
     (property "Reference" "R65" (id 0) (at 234.061 70.2853 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "100" (id 1) (at 234.061 72.8222 0)
+    (property "Value" "DNP" (id 1) (at 234.061 72.8222 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 231.394 70.866 90)
@@ -3294,7 +3294,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 8c2b7f7b-f612-416e-9598-a027f07b1876)
     (property "Reference" "R14" (id 0) (at 138.43 86.8512 90))
-    (property "Value" "500" (id 1) (at 138.43 89.3881 90))
+    (property "Value" "470" (id 1) (at 138.43 89.3881 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 138.176 92.456 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3329,7 +3329,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 8ec21b16-2b3b-4d2e-8bbd-c59cff03e60c)
     (property "Reference" "R66" (id 0) (at 238.76 61.4512 90))
-    (property "Value" "100" (id 1) (at 238.76 63.9881 90))
+    (property "Value" "0" (id 1) (at 238.76 63.9881 90))
     (property "Footprint" "Resistor_SMD:R_1206_3216Metric" (id 2) (at 239.014 65.024 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -4381,10 +4381,10 @@
       (reference "R12") (unit 1) (value "4700") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/6a318012-90af-4c46-97b4-20766224a6af"
-      (reference "R13") (unit 1) (value "500") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R13") (unit 1) (value "470") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/8c2b7f7b-f612-416e-9598-a027f07b1876"
-      (reference "R14") (unit 1) (value "500") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R14") (unit 1) (value "470") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/2e64607a-d8d4-4a13-9ace-2b889e2da0e1"
       (reference "R15") (unit 1) (value "4700") (footprint "Resistor_SMD:R_1206_3216Metric")
@@ -4483,16 +4483,16 @@
       (reference "R64") (unit 1) (value "10") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/6fdbcc23-d1b7-4ef9-a817-5fc13bf8335e"
-      (reference "R65") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R65") (unit 1) (value "DNP") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/8ec21b16-2b3b-4d2e-8bbd-c59cff03e60c"
-      (reference "R66") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R66") (unit 1) (value "0") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/c463e771-2e52-4f16-9eb0-c0d321a9c87f"
       (reference "R67") (unit 1) (value "10") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/3bf728cf-20ea-46fe-b64d-226e7a8fbee5"
-      (reference "R68") (unit 1) (value "100") (footprint "Resistor_SMD:R_1206_3216Metric")
+      (reference "R68") (unit 1) (value "DNP") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/ff6a95e7-6bc1-4212-9c76-7fe6401cd2b8/dfa97546-f6d3-4d29-b3f5-f358956d3eda"
       (reference "RV1") (unit 1) (value "50k") (footprint "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical")
