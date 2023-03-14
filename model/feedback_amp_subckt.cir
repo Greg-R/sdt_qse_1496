@@ -15,11 +15,11 @@ Q1 output 2 1 Q2SC4618
 R1  vsupply 2  4700
 R2  2 0  5100
 R3  6 0   200
-Rf  output 8   500
+Rf  output 8   510.0
 Cf  2 8  0.1u
-Ci  input 2  0.1u
+Ci  input 2  0.01u
 Re  1 6    10.0
-Ce  6 0  0.1u
+Ce  6 0  0.01u
 *Co  3 output  0.1u
 
 *Rbig output 0 1Meg

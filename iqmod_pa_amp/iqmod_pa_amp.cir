@@ -1,0 +1,105 @@
+* Simulate MC1496 based IQ Modulator
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/iqmod_pa_amp/dsbmod_subckt.cir"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/feedback_amp_subckt.cir"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/2N3904.LIB"
+.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/2N3906.LIB"
+
+Vsupply 15 0 DC 12.27
+
+xmodi 1 2 30 31 15 dsbmodulator
+xmodq 3 4 30 31 15 dsbmodulator
+
+* DSB modulator output bias resistors
+Rbiasi 15 30 510.0
+Rbiasq 15 31 510.0
+
+.param audiolevel = 200.0m lolevel = 200.0m
+.param rffreq = 7.0e6
+
+*let pulse_width = 0.5/rffreq
+*let pulse_period = 1.0/rffreq
+
+Viaudio 1 0 sin(0 {audiolevel} 1000    5.0m 0.0  0.0)
+*Vilo    2 0 sin(0.0 {lolevel} {rffreq} 5.0m 0.0  90.0)
+Vilo     2 0 pulse(0.0 0.15 10.0m 2.0n 2.0n {0.5/rffreq} {1.0/rffreq}  0.0 )
+Vqaudio 3 0 sin(0 {audiolevel} 1000    5.0m 0.0 91.0)
+*Vqlo    4 0 sin(0.0 {lolevel} {rffreq} 5.0m 0.0 0.0)
+Vqlo     4 0 pulse(0.0 0.15 10.0m 2.0n 2.0n {0.5/rffreq} {1.0/rffreq} 90.0 )
+
+
+xampplusi  30 ampoutplusi  15 amplifier1
+xampminusi 31 ampoutminusi 15 amplifier1
+
+Lprimary1 ampoutplusi 15 600u
+Lprimary2 15 ampoutminusi 600u
+Lsecondary output 0 1.2m
+Ktrans1 Lprimary1 Lsecondary 1.0
+Ktrans2 Lprimary2 Lsecondary 1.0
+Ktrans3 Lprimary1 Lprimary2  1.0
+Rload output 0 50.0
+
+* The first 3 stages of the power amplifier.
+Cina output 41 0.1u
+Q1a 40 41 42 Q2n3904
+R1 41 15 4700
+R2 41  0 5100
+R3 42  0 200
+Cinb 42 44 0.1u
+* 2nd stage
+Q2a 43 44 45 Q2n3904
+R6 43 44 5600
+R5 44  0 3300
+R7 15 43 1200
+L1 15 46 0.18u
+R10 46 47 680
+C3 47 43 0.1u
+R8 45  0 200
+C4 45  0 390p
+* 3rd stage
+Q3a 15 51 52 Q2n3906
+Q4a  0 54 52 Q2n3904
+C6 43 51 0.1u
+C7 43 54 0.1u
+R11 15 51 24000
+R12 51 54 10000
+R13 54  0 24000
+R9  52  0 3000
+C8  52 outputamp 0.1u
+Rloadtemp outputamp 0 100.0
+
+
+.control
+set ngbehavior=ps
+
+destroy all
+save output outputamp 43 44
+
+tran 10.0n 100.0m 90.0m uic
+
+set lowlimit = 6.990e6
+set highlimit = 7.010e6
+
+plot v(outputamp)
+plot v(output)
+plot v(43)
+plot v(44)
+
+let output2 = v(43)
+
+setplot tran1
+linearize output2
+set specwindow = blackman 
+fft output2
+plot db(output2) xlimit $lowlimit $highlimit  ylimit -100 0.0 ydelta 10.0
+*plot db(output) ylimit -90.0 10.0 ydelta 10.0
+
+setplot tran1
+linearize outputamp
+set specwindow = blackman 
+fft outputamp
+plot db(outputamp) xlimit $lowlimit $highlimit  ylimit -90.0 10.0 ydelta 10.0
+plot db(outputamp)                              ylimit -90.0 10.0 ydelta 10.0
+
+.endc
+
+.end
