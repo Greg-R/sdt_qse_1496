@@ -1,2 +1,13 @@
 *.zip
-
+data_sheets
+doc
+iqmod_pa_amp
+model
+sdt_qse_1496.tar.xz
+sim_cascode
+sim_dsb_modulator
+sim_iqmod_no_amps
+sim_iqmod_rf
+simulation_iq_modulator
+simulation_new
+simulation_original
