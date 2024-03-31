@@ -1,6 +1,6 @@
 * Simulation of a simple BJT cascode amplifier for HF.
-.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/MMBT2222ALT1.LIB"
-.include "/home/raven/gitrepos/pcb/sdt_qse_1496/model/2sc4618.lib"
+.include "/home/raven/gitrepos/ngspice_projects/sdt_qse_1496/model/MMBT2222ALT1.LIB"
+.include "/home/raven/gitrepos/ngspice_projects/sdt_qse_1496/model/2sc4618.lib"
 
 .MODEL Q_JS04_N_1 NPN( IS=9.99F NF=1 NR=1 RE=2.51 RC=1 
 +      RB=10 VAF=40 VAR=20 ISE=4.03P ISC=4.03P 
